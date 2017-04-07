@@ -1,6 +1,6 @@
 // YOUR CUSTOM SETTINGS
-var USER_NAME = 'EDIT_THIS';
-var FF_PROFILE_CODE = 'EDIT_THIS';
+var YOUR_DIR = '.';
+var SCRIPT_GM = YOUR_DIR+'/Custom_Styles_for_MAM';
 
 // REQUIRED
 var gulp    = require( 'gulp' );
@@ -12,7 +12,7 @@ var gif     = require( 'gulp-if' );
 var uglify  = require( 'gulp-uglify' );
 
 // VARIABLES
-var env, name, scriptGM, sassStyle,
+var env, name, sassStyle,
     coffeeIn, jsIn, sassIn,
     coffeeOut, outputDir;
 
@@ -24,9 +24,6 @@ console.log( 'ENV='+env );
 coffeeIn = ['src/*.coffee'];
 jsIn     = ['src/scripts/*.js'];
 sassSrc  = ['src/*.sass'];
-
-// Define userscript locations
-scriptGM = 'C:/Users/'+USER_NAME+'/AppData/Roaming/Mozilla/Firefox/Profiles/'+FF_PROFILE_CODE+'/gm_scripts/Custom_Styles_for_MAM';
 
 // Define destination files
 coffeeOut = 'src/scripts';
@@ -55,7 +52,7 @@ gulp.task('js', function(){
             uglify({ preserveComments: 'license' })
         ) )
         .pipe( gulp.dest( outputDir+'/js' ) )
-        .pipe( gulp.dest( scriptGM ) );
+        .pipe( gulp.dest( SCRIPT_GM ) );
 });
 /*=== SASS / COMPASS ===*/
 gulp.task('sass', function(){
