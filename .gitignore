@@ -6,3 +6,4 @@ node_modules
 gulpfile.js
 src/scripts
 build/dev
+temp
