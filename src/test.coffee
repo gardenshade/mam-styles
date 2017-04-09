@@ -1,7 +1,7 @@
 `// ==UserScript==
 // @name         Custom Styles for MAM
 // @namespace    https://greasyfork.org/en/users/36444
-// @version      0.0.2
+// @version      0.0.3
 // @description  A custom style program
 // @author       GardenShade
 // @include      https://myanonamouse.net/*
