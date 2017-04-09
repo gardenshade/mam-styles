@@ -14,20 +14,29 @@
 // ==/UserScript==`
 
 ( (document,window) ->
+    console.log 'MAM Styles'
     # FUNCTIONS #
     ### Clear Style ###
-    clearstyle = (style) ->
-        style.disabled = true
-    ### Init ###
-    init = ->
-        # Loops through all styles and excludes the User-defined CSS
-        for style in styles when style.href.indexOf('userCSS.php') < 0
-            clearstyle(style)
-        return
+    clearstyle = ->
+        console.log 'clearstyle'
+        styleList = document.head.querySelectorAll 'link[rel=stylesheet]'
+        for style in styleList when style.title.indexOf('userCSS') < 0 and style.href.indexOf('categories') < 0
+            style.parentNode
+                .removeChild style
 
-    # VARIABLES #
-    styles = document.styleSheets
+    ### Add Style ###
+    addStyle = (cssLink) ->
+        console.log 'addStyle'
+        document.head.innerHTML += "<link rel='stylesheet' type='text/css' href='#{cssLink}'>"
+
+
+    ### MAM Styles ###
+    mamStyles = ->
+        console.log 'mamStyles'
+        do clearstyle
+        # can't load from off-server addresses
+        addStyle 'https://raw.githubusercontent.com/gardenshade/mam-styles/master/build/compiled/css/test.css'
 
     # INIT #
-    do init
+    do mamStyles
 )(document,window)
