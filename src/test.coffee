@@ -6,6 +6,8 @@
 // @author       GardenShade
 // @include      https://myanonamouse.net/*
 // @include      https://www.myanonamouse.net/*
+// @resource     customCSS https://raw.githubusercontent.com/gardenshade/mam-styles/master/build/compiled/css/test.css
+// @grant        GM_getResourceText
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @grant        GM_listValues
@@ -24,19 +26,16 @@
             style.parentNode
                 .removeChild style
 
-    ### Add Style ###
-    addStyle = (cssLink) ->
-        console.log 'addStyle'
-        document.head.innerHTML += "<link rel='stylesheet' type='text/css' href='#{cssLink}'>"
-
-
     ### MAM Styles ###
-    mamStyles = ->
+    mamStyles = (css) ->
         console.log 'mamStyles'
         do clearstyle
-        # can't load from off-server addresses
-        addStyle 'https://raw.githubusercontent.com/gardenshade/mam-styles/master/build/compiled/css/test.css'
+        GM_addStyle css
+
+    # VARIABLES
+    newCSS = GM_getResourceText 'customCSS'
 
     # INIT #
-    do mamStyles
+    mamStyles newCSS
+    return
 )(document,window)
