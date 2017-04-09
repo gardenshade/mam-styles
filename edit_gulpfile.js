@@ -64,7 +64,8 @@ gulp.task('sass', function(){
             style: sassStyle
         }) )
         .on( 'error', gutil.log )
-        .pipe( gulp.dest ('build/dev/css/' ) );
+        .pipe( gulp.dest (outputDir+'/css' ) )
+        .pipe( gulp.dest( SCRIPT_GM+'/local' ) );
 });
 /*=== WATCH ===*/
 gulp.task('watch', function(){

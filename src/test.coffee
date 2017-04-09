@@ -1,12 +1,12 @@
 `// ==UserScript==
 // @name         Custom Styles for MAM
 // @namespace    https://greasyfork.org/en/users/36444
-// @version      0.0.3
+// @version      0.0.4
 // @description  A custom style program
 // @author       GardenShade
 // @include      https://myanonamouse.net/*
 // @include      https://www.myanonamouse.net/*
-// @resource     customCSS https://raw.githubusercontent.com/gardenshade/mam-styles/master/build/compiled/css/test.css
+// @resource     localCSS ./local/test.css
 // @grant        GM_getResourceText
 // @grant        GM_setValue
 // @grant        GM_getValue
@@ -33,7 +33,7 @@
         GM_addStyle css
 
     # VARIABLES
-    newCSS = GM_getResourceText 'customCSS'
+    newCSS = GM_getResourceText 'localCSS'
 
     # INIT #
     mamStyles newCSS
